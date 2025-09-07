@@ -61,7 +61,7 @@ const Index = () => {
   return (
     <div className="space-y-20">
       {/* Hero Section */}
-      <Hero imageUrl="src/assets/hero-banner.png" />
+      <Hero imageUrl="/placeholder.svg" />
 
       <div className="container mx-auto px-4 space-y-20">
         {/* Search Section */}
@@ -141,7 +141,7 @@ const Index = () => {
         {/* Trust Indicators */}
         <section className="py-16 glass-card rounded-2xl">
           <div className="text-center space-y-8">
-            <h2 className="text-3xl font-heading font-bold text-foreground">Mengapa Pilih GilzPro?</h2>
+            <h2 className="text-3xl font-heading font-bold text-foreground">Mengapa Pilih TopUpPro?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center space-y-4">
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">

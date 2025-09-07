@@ -27,7 +27,7 @@ export const Navbar = () => {
               <Zap className="w-6 h-6 text-white" />
             </div>
             <span className="font-display font-bold text-xl text-foreground">
-              Gilz<span className="text-neon-cyan">Pro</span>
+              TopUp<span className="text-neon-cyan">Pro</span>
             </span>
           </Link>
 
@@ -76,7 +76,7 @@ export const Navbar = () => {
                   Masuk / Daftar
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => window.open("mailto:support@gilzpro.com")}>
+                <DropdownMenuItem onClick={() => window.open("mailto:support@topuppro.com")}>
                   <HelpCircle className="w-4 h-4 mr-2" />
                   Pusat Bantuan
                 </DropdownMenuItem>

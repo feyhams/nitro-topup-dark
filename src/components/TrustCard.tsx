@@ -34,7 +34,7 @@ export const TrustCard = () => {
       <Card className="p-6 glass-card">
         <div className="text-center mb-6">
           <h3 className="font-heading font-semibold text-lg text-foreground mb-2">
-            Mengapa Pilih GilzPro?
+            Mengapa Pilih TopUpPro?
           </h3>
           <p className="text-sm text-muted-foreground">
             Platform terpercaya untuk semua kebutuhan top-up Anda

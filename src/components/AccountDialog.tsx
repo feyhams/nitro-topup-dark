@@ -25,7 +25,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
   if (isLoggedIn) {
     return (
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-md glass-card no-hover-lift">
+        <DialogContent className="max-w-md glass-card">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <User className="w-5 h-5" />
@@ -58,7 +58,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
               <Button 
                 variant="outline" 
                 className="w-full justify-start"
-                onClick={() => window.open("mailto:support@gilzpro.com")}
+                onClick={() => window.open("mailto:support@topuppro.com")}
               >
                 <HelpCircle className="w-4 h-4 mr-3" />
                 Pusat Bantuan
@@ -80,7 +80,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md glass-card no-hover-lift">
+      <DialogContent className="max-w-md glass-card">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <User className="w-5 h-5" />
@@ -93,7 +93,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
             <TabsTrigger value="register">Daftar</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="login" className="space-y-4 focus:outline-none">
+          <TabsContent value="login" className="space-y-4">
             <div className="space-y-4">
               <div>
                 <Label htmlFor="email">Email atau Nomor HP</Label>
@@ -123,7 +123,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
             </div>
           </TabsContent>
           
-          <TabsContent value="register" className="space-y-4 focus:outline-none">
+          <TabsContent value="register" className="space-y-4">
             <div className="space-y-4">
               <div>
                 <Label htmlFor="reg-email">Email</Label>
