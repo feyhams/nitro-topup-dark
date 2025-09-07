@@ -209,4 +209,15 @@ All colors MUST be HSL.
     box-shadow: var(--glow-primary);
     transform: translateY(-1px);
   }
+
+  .no-hover-transform {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .no-hover-transform:hover {
+    background: hsla(220, 40%, 25%, 0.2) !important;
+    border-color: hsla(220, 60%, 60%, 0.3) !important;
+    box-shadow: 0 12px 40px hsla(220, 60%, 50%, 0.18) !important;
+    transform: none !important;
+  }
 }
