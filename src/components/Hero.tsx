@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Zap, Clock, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center px-4 py-20">
       {/* Decorative Background Elements */}
@@ -44,6 +47,7 @@ export const Hero = () => {
           <Button 
             size="lg" 
             className="text-lg px-8 py-6 bg-gradient-accent hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/20"
+            onClick={() => navigate("/products/mobile")}
           >
             Mulai Top Up Sekarang
           </Button>
@@ -51,6 +55,7 @@ export const Hero = () => {
             variant="outline" 
             size="lg"
             className="text-lg px-8 py-6 glass-card border-primary/30 text-primary hover:bg-primary/10"
+            onClick={() => navigate("/products/mobile")}
           >
             Lihat Produk
           </Button>

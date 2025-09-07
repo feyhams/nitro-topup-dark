@@ -48,9 +48,9 @@ const Index = () => {
   ];
 
   const popularProducts = [
-    { name: "Telkomsel 10K", price: "Rp 9.500", discount: "5% OFF" },
-    { name: "PLN 50K", price: "Rp 50.000", discount: "Gratis Admin" },
-    { name: "ML 86 Diamond", price: "Rp 18.000", discount: "Hot Deal" },
+    { name: "Telkomsel 10K", price: "Rp 9.500", discount: "5% OFF", category: "mobile" },
+    { name: "PLN 50K", price: "Rp 50.000", discount: "Gratis Admin", category: "electricity" },
+    { name: "ML 86 Diamond", price: "Rp 18.000", discount: "Hot Deal", category: "games" },
   ];
 
   const filteredCategories = categories.filter(category =>
@@ -125,7 +125,11 @@ const Index = () => {
                       </span>
                     </div>
                   </div>
-                  <Button size="sm" className="w-full">
+                  <Button 
+                    size="sm" 
+                    className="w-full"
+                    onClick={() => navigate(`/products/${product.category}`)}
+                  >
                     Beli Sekarang
                   </Button>
                 </div>
