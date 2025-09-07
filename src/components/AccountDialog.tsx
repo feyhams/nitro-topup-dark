@@ -25,7 +25,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
   if (isLoggedIn) {
     return (
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-md glass-card">
+        <DialogContent className="max-w-md glass-card no-hover-transform">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <User className="w-5 h-5" />
