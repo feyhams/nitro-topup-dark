@@ -58,7 +58,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
               <Button 
                 variant="outline" 
                 className="w-full justify-start"
-                onClick={() => window.open("mailto:support@topuppro.com")}
+                onClick={() => window.open("mailto:support@gilzpro.com")}
               >
                 <HelpCircle className="w-4 h-4 mr-3" />
                 Pusat Bantuan
