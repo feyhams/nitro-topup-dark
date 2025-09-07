@@ -1,12 +1,16 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Zap, User, History } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Zap, User, History, ChevronDown, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { AccountDialog } from "@/components/AccountDialog";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [accountDialogOpen, setAccountDialogOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
     { label: "Beranda", href: "/", icon: Zap },
@@ -54,10 +58,30 @@ export const Navbar = () => {
             <Badge variant="secondary" className="bg-success/10 text-success border-success/20">
               Saldo: Rp 50.000
             </Badge>
-            <Button variant="outline" size="sm" className="border-primary/20 hover:bg-primary/10">
-              <User className="w-4 h-4 mr-2" />
-              Akun
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm" className="border-primary/20 hover:bg-primary/10">
+                  <User className="w-4 h-4 mr-2" />
+                  Akun
+                  <ChevronDown className="w-3 h-3 ml-1" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 glass-card">
+                <DropdownMenuItem onClick={() => navigate("/history")}>
+                  <History className="w-4 h-4 mr-2" />
+                  Riwayat Transaksi
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setAccountDialogOpen(true)}>
+                  <User className="w-4 h-4 mr-2" />
+                  Masuk / Daftar
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => window.open("mailto:support@topuppro.com")}>
+                  <HelpCircle className="w-4 h-4 mr-2" />
+                  Pusat Bantuan
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Mobile Menu Button */}
@@ -98,7 +122,14 @@ export const Navbar = () => {
                 <Badge variant="secondary" className="bg-success/10 text-success border-success/20 w-full justify-center">
                   Saldo: Rp 50.000
                 </Badge>
-                <Button variant="outline" className="w-full border-primary/20 hover:bg-primary/10">
+                <Button 
+                  variant="outline" 
+                  className="w-full border-primary/20 hover:bg-primary/10"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setAccountDialogOpen(true);
+                  }}
+                >
                   <User className="w-4 h-4 mr-2" />
                   Akun Saya
                 </Button>
@@ -107,6 +138,11 @@ export const Navbar = () => {
           </div>
         )}
       </div>
+
+      <AccountDialog 
+        open={accountDialogOpen} 
+        onOpenChange={setAccountDialogOpen} 
+      />
     </nav>
   );
 };

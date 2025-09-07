@@ -61,7 +61,7 @@ const Index = () => {
   return (
     <div className="space-y-20">
       {/* Hero Section */}
-      <Hero />
+      <Hero imageUrl="/placeholder.svg" />
 
       <div className="container mx-auto px-4 space-y-20">
         {/* Search Section */}
@@ -78,7 +78,7 @@ const Index = () => {
         </section>
 
         {/* Categories Section */}
-        <section className="space-y-8">
+        <section id="categories" className="space-y-8">
           <div className="text-center space-y-4">
             <h2 className="text-3xl font-heading font-bold text-foreground">Kategori Produk</h2>
             <p className="text-muted-foreground">Pilih kategori sesuai kebutuhan Anda</p>

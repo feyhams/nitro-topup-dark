@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { FilterBar } from "@/components/FilterBar";
 import { GameOptionCard } from "@/components/GameOptionCard";
 import { TrustCard } from "@/components/TrustCard";
+import { HeadBanner } from "@/components/HeadBanner";
 
 const productData = {
   mobile: [
@@ -53,6 +54,13 @@ export default function Products() {
     games: "Top-up game favorit dengan harga terbaik"
   }[category as string] || "Pilih produk yang Anda butuhkan";
 
+  const categoryImages = {
+    mobile: "/placeholder.svg",
+    electricity: "/placeholder.svg", 
+    data: "/placeholder.svg",
+    games: "/placeholder.svg"
+  };
+
   // Get unique providers for filter
   const providers = Array.from(new Set(products.map(p => p.provider)));
 
@@ -77,6 +85,14 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Head Banner */}
+      <HeadBanner 
+        imageUrl={categoryImages[category as keyof typeof categoryImages] || "/placeholder.svg"}
+        title={categoryName}
+        subtitle={categoryDescription}
+        height="md"
+      />
+      
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8 animate-fade-in">
