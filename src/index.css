@@ -210,10 +210,12 @@ All colors MUST be HSL.
     transform: translateY(-1px);
   }
 
-  /* Fix for dialog jumping on hover */
-  .no-hover-lift:hover {
+  /* Fix for dialog jumping on hover - more specific override */
+  .glass-card.no-hover-lift:hover {
     transform: none !important;
     box-shadow: var(--glow-glass) !important;
+    background: hsla(220, 30%, 20%, 0.15) !important;
+    border-color: hsla(220, 60%, 50%, 0.2) !important;
   }
 
   .no-hover-transition {
