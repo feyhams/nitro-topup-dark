@@ -54,7 +54,7 @@ export const Hero = ({ imageUrl }: HeroProps) => {
         {/* Main Headlines */}
         <div className="space-y-4">
           <h1 className="text-5xl md:text-7xl font-heading font-bold text-foreground tracking-tight">
-            TopUp<span className="text-neon-cyan">Pro</span>
+            Gilz<span className="text-neon-cyan">Go</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Platform top-up digital terpercaya untuk pulsa, token listrik, paket data, dan voucher game

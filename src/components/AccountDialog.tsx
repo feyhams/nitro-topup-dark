@@ -25,7 +25,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
   if (isLoggedIn) {
     return (
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-md bg-background border border-border no-animations static-position">
+        <DialogContent className="max-w-md bg-background border border-border">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <User className="w-5 h-5" />
@@ -80,7 +80,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md bg-background border border-border no-animations static-position">
+      <DialogContent className="max-w-md bg-background border border-border">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <User className="w-5 h-5" />

@@ -224,17 +224,14 @@ All colors MUST be HSL.
   .no-animations {
     animation: none !important;
     transition: none !important;
-    transform: none !important;
   }
 
   .no-animations:hover {
-    transform: none !important;
     transition: none !important;
     animation: none !important;
   }
 
   .static-position {
-    position: fixed !important;
     animation: none !important;
     transition: none !important;
   }

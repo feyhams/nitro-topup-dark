@@ -27,7 +27,7 @@ export const Navbar = () => {
               <Zap className="w-6 h-6 text-white" />
             </div>
             <span className="font-display font-bold text-xl text-foreground">
-              TopUp<span className="text-neon-cyan">Pro</span>
+              Gilz<span className="text-neon-cyan">Go</span>
             </span>
           </Link>
 

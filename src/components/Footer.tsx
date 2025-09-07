@@ -53,7 +53,7 @@ export const Footer = () => {
                 <Zap className="w-5 h-5 text-white" />
               </div>
               <span className="font-display font-bold text-lg text-foreground">
-                TopUp<span className="text-neon-cyan">Pro</span>
+                Gilz<span className="text-neon-cyan">Go</span>
               </span>
             </Link>
             <p className="text-sm text-muted-foreground">
@@ -127,7 +127,7 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} TopUpPro. Semua hak dilindungi undang-undang.
+            © {currentYear} GilzGo. Semua hak dilindungi undang-undang.
           </p>
         </div>
       </div>
