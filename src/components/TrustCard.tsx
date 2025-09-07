@@ -31,9 +31,9 @@ export const TrustCard = () => {
 
   return (
     <div className="sticky top-24">
-      <Card className="p-6 bg-gradient-dark border-border/50 hover-glow">
+      <Card className="p-6 glass-card">
         <div className="text-center mb-6">
-          <h3 className="font-display font-semibold text-lg text-foreground mb-2">
+          <h3 className="font-heading font-semibold text-lg text-foreground mb-2">
             Mengapa Pilih TopUpPro?
           </h3>
           <p className="text-sm text-muted-foreground">

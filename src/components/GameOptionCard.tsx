@@ -33,7 +33,7 @@ export const GameOptionCard = ({
 
   return (
     <Card
-      className="group relative overflow-hidden bg-gradient-dark border-border/50 hover:border-primary/30 transition-all duration-300 cursor-pointer animate-scale-in"
+      className="group relative overflow-hidden glass-card transition-all duration-300 cursor-pointer animate-scale-in"
       style={{ animationDelay: `${id * 100}ms` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -78,7 +78,7 @@ export const GameOptionCard = ({
 
         {/* Product Info */}
         <div className="space-y-2">
-          <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+          <h3 className="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">
             {name}
           </h3>
           <p className="text-sm text-neon-blue">{bonus}</p>
@@ -109,8 +109,6 @@ export const GameOptionCard = ({
         </div>
       </div>
 
-      {/* Hover Border Effect */}
-      <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-lg transition-all duration-300 pointer-events-none" />
     </Card>
   );
 };

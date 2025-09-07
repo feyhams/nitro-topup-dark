@@ -14,6 +14,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CategoryCard } from "@/components/CategoryCard";
 import { SearchBar } from "@/components/SearchBar";
+import { Hero } from "@/components/Hero";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -58,149 +59,116 @@ const Index = () => {
   );
 
   return (
-    <div className="bg-background">
+    <div className="space-y-20">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-primary opacity-5" />
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-display font-bold text-foreground mb-6">
-              Platform <span className="text-neon-cyan">TopUp</span> Digital
-              <br />
-              <span className="text-3xl md:text-5xl text-muted-foreground">Terpercaya</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Isi pulsa, beli token PLN, paket data, dan voucher game dengan mudah, 
-              cepat, dan aman. Proses instan dalam hitungan detik!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" className="bg-gradient-primary hover:scale-105 transition-transform">
-                Mulai Top-Up Sekarang
-              </Button>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
-                1M+ pengguna aktif
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 space-y-20">
         {/* Search Section */}
-        <div className="mb-16 animate-slide-up">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-display font-semibold text-foreground mb-2">
-              Apa yang ingin Anda isi hari ini?
-            </h2>
-            <p className="text-muted-foreground">
-              Pilih kategori atau cari langsung produk yang Anda butuhkan
-            </p>
+        <section className="space-y-8">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-heading font-bold text-foreground">Cari Produk</h2>
+            <p className="text-muted-foreground">Temukan produk yang Anda butuhkan</p>
           </div>
-          <SearchBar
-            value={searchTerm}
-            onChange={setSearchTerm}
-            onFilterChange={() => {}}
+          <SearchBar 
+            searchTerm={searchTerm} 
+            onSearchChange={setSearchTerm}
+            placeholder="Cari produk top-up..."
           />
-        </div>
+        </section>
 
-        {/* Categories */}
-        <div className="mb-16 animate-slide-up" style={{ animationDelay: "200ms" }}>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-display font-bold text-foreground mb-4">
-              Pilih Kategori
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Dari pulsa hingga voucher game, semua ada di sini dengan harga terbaik
-            </p>
+        {/* Categories Section */}
+        <section className="space-y-8">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-heading font-bold text-foreground">Kategori Produk</h2>
+            <p className="text-muted-foreground">Pilih kategori sesuai kebutuhan Anda</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredCategories.map((category, index) => (
-              <div key={index} style={{ animationDelay: `${300 + index * 100}ms` }}>
-                <CategoryCard
-                  title={category.title}
-                  description={category.description}
-                  icon={category.icon}
-                  onClick={() => navigate(category.path)}
-                  className="animate-scale-in hover:scale-105 transition-transform duration-200"
-                />
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredCategories.map((category) => (
+              <CategoryCard
+                key={category.title}
+                title={category.title}
+                description={category.description}
+                icon={category.icon}
+                onClick={() => navigate(category.path)}
+                className="animate-fade-in"
+              />
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Popular Products */}
-        <div className="mb-16 animate-slide-up" style={{ animationDelay: "400ms" }}>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-display font-bold text-foreground mb-4">
-              Penawaran Populer
-            </h2>
-            <p className="text-muted-foreground">
-              Produk terlaris dengan harga spesial untuk Anda
-            </p>
+        {/* Popular Products Section */}
+        <section className="space-y-8">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-heading font-bold text-foreground">Produk Populer</h2>
+            <p className="text-muted-foreground">Produk yang paling banyak dipilih pengguna</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {popularProducts.map((product, index) => (
-              <Card
+              <Card 
                 key={index}
-                className="p-6 hover-glow cursor-pointer bg-gradient-dark border-border/50 transition-all duration-300 hover:scale-[1.02] animate-scale-in group"
-                style={{ animationDelay: `${500 + index * 100}ms` }}
+                className="p-6 glass-card cursor-pointer animate-scale-in"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <Badge className="bg-gradient-accent text-white border-0 animate-glow">
-                    Populer
-                  </Badge>
-                  <span className="text-sm text-success font-medium">{product.discount}</span>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <Star className="w-5 h-5 text-neon-cyan" />
+                    <Badge className="bg-warning text-warning-foreground">
+                      {product.discount}
+                    </Badge>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-heading font-semibold text-foreground">{product.name}</h3>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground">Populer</span>
+                      <span className="text-lg font-bold text-neon-cyan">
+                        {product.price}
+                      </span>
+                    </div>
+                  </div>
+                  <Button size="sm" className="w-full">
+                    Beli Sekarang
+                  </Button>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {product.name}
-                </h3>
-                <p className="text-2xl font-bold text-neon-cyan">{product.price}</p>
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Trust Indicators */}
-        <div className="text-center animate-slide-up" style={{ animationDelay: "600ms" }}>
-          <h2 className="text-3xl font-display font-bold text-foreground mb-4">
-            Mengapa Pilih TopUpPro?
-          </h2>
-          <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Kami berkomitmen memberikan layanan terbaik dengan standar keamanan tinggi
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center space-y-4 p-6 rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-200 animate-scale-in" style={{ animationDelay: "700ms" }}>
-              <div className="p-4 rounded-full bg-primary/10 border border-primary/30">
-                <Shield className="w-8 h-8 text-neon-cyan" />
+        <section className="py-16 glass-card rounded-2xl">
+          <div className="text-center space-y-8">
+            <h2 className="text-3xl font-heading font-bold text-foreground">Mengapa Pilih TopUpPro?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                  <Shield className="w-8 h-8 text-neon-cyan" />
+                </div>
+                <h3 className="text-xl font-heading font-semibold text-foreground">Keamanan Terjamin</h3>
+                <p className="text-muted-foreground">
+                  Transaksi aman dengan enkripsi SSL dan sistem keamanan berlapis
+                </p>
               </div>
-              <h3 className="text-lg font-semibold text-foreground">Aman & Terpercaya</h3>
-              <p className="text-muted-foreground text-center">
-                Transaksi dilindungi enkripsi SSL dan diawasi OJK
-              </p>
-            </div>
-            
-            <div className="flex flex-col items-center space-y-4 p-6 rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-200 animate-scale-in" style={{ animationDelay: "800ms" }}>
-              <div className="p-4 rounded-full bg-primary/10 border border-primary/30">
-                <Zap className="w-8 h-8 text-neon-cyan" />
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                  <Zap className="w-8 h-8 text-neon-cyan" />
+                </div>
+                <h3 className="text-xl font-heading font-semibold text-foreground">Proses Instan</h3>
+                <p className="text-muted-foreground">
+                  Top-up langsung masuk ke akun Anda dalam hitungan detik
+                </p>
               </div>
-              <h3 className="text-lg font-semibold text-foreground">Proses Instan</h3>
-              <p className="text-muted-foreground text-center">
-                Top-up berhasil dalam hitungan detik, 24/7
-              </p>
-            </div>
-            
-            <div className="flex flex-col items-center space-y-4 p-6 rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-200 animate-scale-in" style={{ animationDelay: "900ms" }}>
-              <div className="p-4 rounded-full bg-primary/10 border border-primary/30">
-                <Headphones className="w-8 h-8 text-neon-cyan" />
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                  <Headphones className="w-8 h-8 text-neon-cyan" />
+                </div>
+                <h3 className="text-xl font-heading font-semibold text-foreground">Support 24/7</h3>
+                <p className="text-muted-foreground">
+                  Tim customer service siap membantu Anda kapan saja
+                </p>
               </div>
-              <h3 className="text-lg font-semibold text-foreground">Support 24/7</h3>
-              <p className="text-muted-foreground text-center">
-                Tim dukungan profesional siap membantu Anda
-              </p>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

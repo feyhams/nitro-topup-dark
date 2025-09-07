@@ -12,8 +12,8 @@ const paymentMethods = [
 
 export const PaymentMethods = () => {
   return (
-    <Card className="p-6 bg-gradient-dark border-border/50">
-      <h3 className="text-lg font-semibold mb-4 text-foreground">Payment Methods</h3>
+    <Card className="p-6 glass-card">
+      <h3 className="text-lg font-heading font-semibold mb-4 text-foreground">Payment Methods</h3>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {paymentMethods.map((method) => (
           <div

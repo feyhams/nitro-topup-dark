@@ -9,48 +9,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 interface SearchBarProps {
-  value: string;
-  onChange: (value: string) => void;
-  onFilterChange: (filter: string) => void;
+  searchTerm: string;
+  onSearchChange: (value: string) => void;
+  placeholder?: string;
 }
 
-export const SearchBar = ({ value, onChange, onFilterChange }: SearchBarProps) => {
+export const SearchBar = ({ searchTerm, onSearchChange, placeholder = "Cari produk..." }: SearchBarProps) => {
   return (
-    <div className="flex gap-3 w-full max-w-2xl">
-      <div className="relative flex-1">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+    <div className="flex justify-center">
+      <div className="relative w-full max-w-2xl">
+        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
         <Input
           type="text"
-          placeholder="Search products, games, or providers..."
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className="pl-10 bg-secondary/50 border-border focus:border-primary focus:ring-1 focus:ring-primary"
+          placeholder={placeholder}
+          value={searchTerm}
+          onChange={(e) => onSearchChange(e.target.value)}
+          className="pl-12 pr-4 py-4 text-lg glass-card border-0 focus:ring-2 focus:ring-primary/50 focus:border-transparent"
         />
       </div>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon" className="bg-secondary/50 border-border hover:bg-secondary">
-            <Filter className="w-4 h-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="bg-card border-border">
-          <DropdownMenuItem onClick={() => onFilterChange("all")}>
-            All Categories
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => onFilterChange("mobile")}>
-            Mobile Credit
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => onFilterChange("electricity")}>
-            Electricity
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => onFilterChange("data")}>
-            Data Packages
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => onFilterChange("games")}>
-            Game Vouchers
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
     </div>
   );
 };

@@ -12,7 +12,7 @@ interface CategoryCardProps {
 export const CategoryCard = ({ title, description, icon: Icon, onClick, className }: CategoryCardProps) => {
   return (
     <Card 
-      className={`p-6 cursor-pointer hover-glow border-border/50 bg-gradient-dark transition-all duration-300 hover:scale-[1.02] ${className}`}
+      className={`p-6 cursor-pointer glass-card transition-all duration-300 hover:scale-[1.02] ${className}`}
       onClick={onClick}
     >
       <div className="flex flex-col items-center text-center space-y-4">
@@ -20,7 +20,7 @@ export const CategoryCard = ({ title, description, icon: Icon, onClick, classNam
           <Icon className="w-8 h-8 text-neon-cyan" />
         </div>
         <div className="space-y-2">
-          <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+          <h3 className="text-lg font-heading font-semibold text-foreground">{title}</h3>
           <p className="text-sm text-muted-foreground">{description}</p>
         </div>
       </div>
