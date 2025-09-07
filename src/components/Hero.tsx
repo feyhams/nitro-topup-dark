@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Zap, Clock, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import heroBg from "@/assets/hero-bg.webp";
 
 interface HeroProps {
   imageUrl?: string;
@@ -20,15 +21,11 @@ export const Hero = ({ imageUrl }: HeroProps) => {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center px-4 py-20">
       {/* Background Image */}
-      {imageUrl && (
-        <>
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${imageUrl})` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/90" />
-        </>
-      )}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/90" />
       
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden">

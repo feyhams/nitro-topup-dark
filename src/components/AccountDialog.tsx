@@ -80,7 +80,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md glass-card no-hover-transform">
+      <DialogContent className="max-w-md glass-card no-hover-transform static-dialog">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <User className="w-5 h-5" />

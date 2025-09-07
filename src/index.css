@@ -220,4 +220,13 @@ All colors MUST be HSL.
     box-shadow: 0 12px 40px hsla(220, 60%, 50%, 0.18) !important;
     transform: none !important;
   }
+
+  .static-dialog {
+    transition: none !important;
+  }
+
+  .static-dialog:hover {
+    transform: none !important;
+    transition: none !important;
+  }
 }
