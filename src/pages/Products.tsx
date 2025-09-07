@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Zap, Star } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { FilterBar } from "@/components/FilterBar";
+import { GameOptionCard } from "@/components/GameOptionCard";
+import { TrustCard } from "@/components/TrustCard";
 
 const productData = {
   mobile: [
@@ -33,14 +34,41 @@ export default function Products() {
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedProvider, setSelectedProvider] = useState("all");
+  const [priceRange, setPriceRange] = useState("all");
 
   const products = productData[category as keyof typeof productData] || [];
   const categoryName = {
-    mobile: "Mobile Credit",
-    electricity: "Electricity Tokens",
-    data: "Data Packages",
-    games: "Game Vouchers"
-  }[category as string] || "Products";
+    mobile: "Pulsa & Paket Data",
+    electricity: "Token PLN",
+    data: "Paket Internet",
+    games: "Voucher Game"
+  }[category as string] || "Produk";
+
+  const categoryDescription = {
+    mobile: "Isi pulsa dan beli paket data dengan mudah",
+    electricity: "Beli token PLN listrik prabayar",
+    data: "Paket internet murah untuk semua operator",
+    games: "Top-up game favorit dengan harga terbaik"
+  }[category as string] || "Pilih produk yang Anda butuhkan";
+
+  // Get unique providers for filter
+  const providers = Array.from(new Set(products.map(p => p.provider)));
+
+  // Filter products based on search and filters
+  const filteredProducts = products.filter(product => {
+    const matchesSearch = product.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+                         product.provider.toLowerCase().includes(searchValue.toLowerCase());
+    const matchesProvider = selectedProvider === "all" || product.provider === selectedProvider;
+    
+    let matchesPrice = true;
+    if (priceRange === "under-10k") matchesPrice = product.price < 10000;
+    else if (priceRange === "10k-50k") matchesPrice = product.price >= 10000 && product.price <= 50000;
+    else if (priceRange === "over-50k") matchesPrice = product.price > 50000;
+
+    return matchesSearch && matchesProvider && matchesPrice;
+  });
 
   const handleSelectProduct = (productId: number) => {
     setSelectedProduct(productId);
@@ -49,56 +77,77 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center gap-4 mb-8">
+      <div className="container mx-auto px-4 py-6">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-8 animate-fade-in">
           <Button
             variant="ghost"
             size="icon"
             onClick={() => navigate("/")}
-            className="hover:bg-secondary"
+            className="hover:bg-secondary/50"
           >
             <ArrowLeft className="w-4 h-4" />
           </Button>
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">{categoryName}</h1>
-            <p className="text-muted-foreground">Choose your preferred option</p>
+          <div className="flex-1">
+            <h1 className="text-3xl font-display font-bold text-foreground mb-2">
+              {categoryName}
+            </h1>
+            <p className="text-muted-foreground">{categoryDescription}</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product) => (
-            <Card
-              key={product.id}
-              className="p-6 hover-glow cursor-pointer bg-gradient-dark border-border/50 transition-all duration-300 hover:scale-[1.02]"
-              onClick={() => handleSelectProduct(product.id)}
-            >
-              <div className="flex justify-between items-start mb-4">
-                <div className="flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-neon-cyan" />
-                  <span className="text-sm font-medium text-muted-foreground">{product.provider}</span>
-                </div>
-                {product.popular && (
-                  <Badge className="bg-gradient-accent text-accent-foreground">
-                    <Star className="w-3 h-3 mr-1" />
-                    Popular
-                  </Badge>
-                )}
-              </div>
+        {/* Filter Bar */}
+        <div className="mb-8 animate-slide-up" style={{ animationDelay: "100ms" }}>
+          <FilterBar
+            searchValue={searchValue}
+            onSearchChange={setSearchValue}
+            selectedProvider={selectedProvider}
+            onProviderChange={setSelectedProvider}
+            providers={providers}
+            priceRange={priceRange}
+            onPriceRangeChange={setPriceRange}
+          />
+        </div>
 
-              <div className="space-y-3">
-                <h3 className="text-xl font-semibold text-foreground">{product.name}</h3>
-                <p className="text-neon-blue text-sm">{product.bonus}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-neon-cyan">
-                    Rp {product.price.toLocaleString('id-ID')}
-                  </span>
-                  <Button variant="neon" size="sm">
-                    Select
-                  </Button>
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Products Grid */}
+          <div className="lg:col-span-3">
+            {filteredProducts.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {filteredProducts.map((product, index) => (
+                  <div key={product.id} style={{ animationDelay: `${200 + index * 50}ms` }}>
+                    <GameOptionCard
+                      id={product.id}
+                      name={product.name}
+                      price={product.price}
+                      provider={product.provider}
+                      bonus={product.bonus}
+                      popular={product.popular}
+                      discount={product.popular ? 10 : undefined}
+                      onClick={() => handleSelectProduct(product.id)}
+                    />
+                  </div>
+                ))}
               </div>
-            </Card>
-          ))}
+            ) : (
+              <div className="text-center py-12 animate-fade-in">
+                <div className="text-muted-foreground mb-4">
+                  <span className="text-4xl">🔍</span>
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  Produk tidak ditemukan
+                </h3>
+                <p className="text-muted-foreground">
+                  Coba ubah kata kunci pencarian atau filter yang Anda gunakan
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Trust Card */}
+          <div className="lg:col-span-1 animate-slide-up" style={{ animationDelay: "300ms" }}>
+            <TrustCard />
+          </div>
         </div>
       </div>
     </div>

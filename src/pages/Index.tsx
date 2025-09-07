@@ -5,9 +5,8 @@ import {
   Zap, 
   Wifi, 
   Gamepad2, 
-  Clock,
   Shield,
-  TrendingUp,
+  Headphones,
   Star
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,166 +17,191 @@ import { SearchBar } from "@/components/SearchBar";
 
 const Index = () => {
   const navigate = useNavigate();
-  const [searchValue, setSearchValue] = useState("");
-  const [filter, setFilter] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const categories = [
     {
-      title: "Mobile Credit",
-      description: "Top up your phone balance instantly",
+      title: "Pulsa & Paket Data",
+      description: "Isi pulsa dan beli paket data dengan mudah",
       icon: Smartphone,
       path: "/products/mobile"
     },
     {
-      title: "Electricity Tokens",
-      description: "PLN tokens for your home",
+      title: "Token PLN",
+      description: "Beli token PLN listrik prabayar",
       icon: Zap,
       path: "/products/electricity"
     },
     {
-      title: "Data Packages",
-      description: "Internet data for all providers",
+      title: "Paket Internet",
+      description: "Paket internet murah untuk semua operator",
       icon: Wifi,
       path: "/products/data"
     },
     {
-      title: "Game Vouchers",
-      description: "Gaming credits and diamonds",
+      title: "Voucher Game",
+      description: "Top-up game favorit dengan harga terbaik",
       icon: Gamepad2,
       path: "/products/games"
     }
   ];
 
   const popularProducts = [
-    { name: "Telkomsel 10K", price: 10000, discount: "5% OFF" },
-    { name: "PLN 50K", price: 50000, discount: "Free Admin" },
-    { name: "ML 86 Diamond", price: 20000, discount: "Hot Deal" },
+    { name: "Telkomsel 10K", price: "Rp 9.500", discount: "5% OFF" },
+    { name: "PLN 50K", price: "Rp 50.000", discount: "Gratis Admin" },
+    { name: "ML 86 Diamond", price: "Rp 18.000", discount: "Hot Deal" },
   ];
 
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-gradient-dark border-b border-border/50">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-center md:text-left">
-              <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                TopUp Pro
-              </h1>
-              <p className="text-muted-foreground mt-1">Digital payments made easy</p>
-            </div>
-            <div className="flex gap-3">
-              <Button variant="outline" onClick={() => navigate("/history")}>
-                <Clock className="w-4 h-4 mr-2" />
-                History
-              </Button>
-              <Button variant="neon">
-                <Shield className="w-4 h-4 mr-2" />
-                Trusted Platform
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+  const filteredCategories = categories.filter(category =>
+    category.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    category.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-      {/* Search Section */}
-      <section className="py-12 bg-gradient-to-b from-background to-secondary/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground mb-3">
-              What would you like to top up?
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Fast, secure, and reliable digital transactions
+  return (
+    <div className="bg-background">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-primary opacity-5" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="animate-fade-in">
+            <h1 className="text-4xl md:text-6xl font-display font-bold text-foreground mb-6">
+              Platform <span className="text-neon-cyan">TopUp</span> Digital
+              <br />
+              <span className="text-3xl md:text-5xl text-muted-foreground">Terpercaya</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              Isi pulsa, beli token PLN, paket data, dan voucher game dengan mudah, 
+              cepat, dan aman. Proses instan dalam hitungan detik!
             </p>
-          </div>
-          <div className="flex justify-center">
-            <SearchBar 
-              value={searchValue}
-              onChange={setSearchValue}
-              onFilterChange={setFilter}
-            />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button size="lg" className="bg-gradient-primary hover:scale-105 transition-transform">
+                Mulai Top-Up Sekarang
+              </Button>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
+                1M+ pengguna aktif
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h3 className="text-2xl font-bold text-center mb-12 text-foreground">
-            Choose Your Service
-          </h3>
+      <div className="container mx-auto px-4 py-16">
+        {/* Search Section */}
+        <div className="mb-16 animate-slide-up">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-display font-semibold text-foreground mb-2">
+              Apa yang ingin Anda isi hari ini?
+            </h2>
+            <p className="text-muted-foreground">
+              Pilih kategori atau cari langsung produk yang Anda butuhkan
+            </p>
+          </div>
+          <SearchBar
+            value={searchTerm}
+            onChange={setSearchTerm}
+            onFilterChange={() => {}}
+          />
+        </div>
+
+        {/* Categories */}
+        <div className="mb-16 animate-slide-up" style={{ animationDelay: "200ms" }}>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-display font-bold text-foreground mb-4">
+              Pilih Kategori
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Dari pulsa hingga voucher game, semua ada di sini dengan harga terbaik
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map((category) => (
-              <CategoryCard
-                key={category.title}
-                title={category.title}
-                description={category.description}
-                icon={category.icon}
-                onClick={() => navigate(category.path)}
-              />
+            {filteredCategories.map((category, index) => (
+              <div key={index} style={{ animationDelay: `${300 + index * 100}ms` }}>
+                <CategoryCard
+                  title={category.title}
+                  description={category.description}
+                  icon={category.icon}
+                  onClick={() => navigate(category.path)}
+                  className="animate-scale-in hover:scale-105 transition-transform duration-200"
+                />
+              </div>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* Popular Products */}
-      <section className="py-16 bg-secondary/10">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <TrendingUp className="w-6 h-6 text-neon-cyan" />
-            <h3 className="text-2xl font-bold text-foreground">Hot Deals Today</h3>
+        {/* Popular Products */}
+        <div className="mb-16 animate-slide-up" style={{ animationDelay: "400ms" }}>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-display font-bold text-foreground mb-4">
+              Penawaran Populer
+            </h2>
+            <p className="text-muted-foreground">
+              Produk terlaris dengan harga spesial untuk Anda
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {popularProducts.map((product, index) => (
               <Card
                 key={index}
-                className="p-6 hover-glow cursor-pointer bg-gradient-dark border-border/50 transition-all duration-300 hover:scale-[1.02]"
+                className="p-6 hover-glow cursor-pointer bg-gradient-dark border-border/50 transition-all duration-300 hover:scale-[1.02] animate-scale-in group"
+                style={{ animationDelay: `${500 + index * 100}ms` }}
               >
-                <div className="flex justify-between items-start mb-4">
-                  <Badge className="bg-gradient-accent text-accent-foreground">
-                    <Star className="w-3 h-3 mr-1" />
-                    {product.discount}
+                <div className="flex items-center justify-between mb-4">
+                  <Badge className="bg-gradient-accent text-white border-0 animate-glow">
+                    Populer
                   </Badge>
+                  <span className="text-sm text-success font-medium">{product.discount}</span>
                 </div>
-                <h4 className="font-semibold text-lg text-foreground mb-2">{product.name}</h4>
-                <p className="text-2xl font-bold text-neon-cyan">
-                  Rp {product.price.toLocaleString('id-ID')}
-                </p>
+                <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {product.name}
+                </h3>
+                <p className="text-2xl font-bold text-neon-cyan">{product.price}</p>
               </Card>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* Trust Indicators */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+        {/* Trust Indicators */}
+        <div className="text-center animate-slide-up" style={{ animationDelay: "600ms" }}>
+          <h2 className="text-3xl font-display font-bold text-foreground mb-4">
+            Mengapa Pilih TopUpPro?
+          </h2>
+          <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Kami berkomitmen memberikan layanan terbaik dengan standar keamanan tinggi
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex flex-col items-center space-y-4 p-6 rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-200 animate-scale-in" style={{ animationDelay: "700ms" }}>
+              <div className="p-4 rounded-full bg-primary/10 border border-primary/30">
                 <Shield className="w-8 h-8 text-neon-cyan" />
               </div>
-              <h4 className="font-semibold text-foreground mb-2">100% Secure</h4>
-              <p className="text-muted-foreground">SSL encrypted transactions</p>
+              <h3 className="text-lg font-semibold text-foreground">Aman & Terpercaya</h3>
+              <p className="text-muted-foreground text-center">
+                Transaksi dilindungi enkripsi SSL dan diawasi OJK
+              </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            
+            <div className="flex flex-col items-center space-y-4 p-6 rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-200 animate-scale-in" style={{ animationDelay: "800ms" }}>
+              <div className="p-4 rounded-full bg-primary/10 border border-primary/30">
                 <Zap className="w-8 h-8 text-neon-cyan" />
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Instant Delivery</h4>
-              <p className="text-muted-foreground">Credits delivered in seconds</p>
+              <h3 className="text-lg font-semibold text-foreground">Proses Instan</h3>
+              <p className="text-muted-foreground text-center">
+                Top-up berhasil dalam hitungan detik, 24/7
+              </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="w-8 h-8 text-neon-cyan" />
+            
+            <div className="flex flex-col items-center space-y-4 p-6 rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-200 animate-scale-in" style={{ animationDelay: "900ms" }}>
+              <div className="p-4 rounded-full bg-primary/10 border border-primary/30">
+                <Headphones className="w-8 h-8 text-neon-cyan" />
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Trusted Platform</h4>
-              <p className="text-muted-foreground">Over 1M+ satisfied users</p>
+              <h3 className="text-lg font-semibold text-foreground">Support 24/7</h3>
+              <p className="text-muted-foreground text-center">
+                Tim dukungan profesional siap membantu Anda
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
