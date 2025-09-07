@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Shield, Zap, Clock, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface HeroProps {
@@ -21,7 +20,7 @@ export const Hero = ({ imageUrl }: HeroProps) => {
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-        style={{ backgroundImage: `url(/lovable-uploads/c256e183-33d7-4e00-95fb-92af53e1826e.png)` }}
+        style={{ backgroundImage: `url(/lovable-uploads/4770ebfb-3596-4811-a1ac-bd6a2fa54b70.png)` }}
       />
       
       {/* Dark gradient overlay */}
@@ -65,28 +64,6 @@ export const Hero = ({ imageUrl }: HeroProps) => {
           </Button>
         </div>
 
-        {/* Trust Indicators */}
-        <div className="pt-8">
-          <p className="text-sm text-muted-foreground mb-4">Platform terpercaya dengan</p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-neon-cyan" />
-              <span className="text-foreground">SSL Encryption</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-neon-cyan" />
-              <span className="text-foreground">Proses Instan</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-neon-cyan" />
-              <span className="text-foreground">24/7 Support</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-neon-cyan" />
-              <span className="text-foreground">100K+ Users</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
