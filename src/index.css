@@ -209,4 +209,14 @@ All colors MUST be HSL.
     box-shadow: var(--glow-primary);
     transform: translateY(-1px);
   }
+
+  /* Fix for dialog jumping on hover */
+  .no-hover-lift:hover {
+    transform: none !important;
+    box-shadow: var(--glow-glass) !important;
+  }
+
+  .no-hover-transition {
+    transition: none !important;
+  }
 }
