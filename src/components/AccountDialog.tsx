@@ -25,7 +25,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
   if (isLoggedIn) {
     return (
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-md glass-card no-hover-transform">
+        <DialogContent className="max-w-md bg-background border border-border no-animations static-position">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <User className="w-5 h-5" />
@@ -80,7 +80,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md glass-card no-hover-transform static-dialog">
+      <DialogContent className="max-w-md bg-background border border-border no-animations static-position">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <User className="w-5 h-5" />
@@ -101,7 +101,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
                   id="email"
                   type="text"
                   placeholder="Masukkan email atau nomor HP"
-                  className="mt-1"
+                  className="mt-1 focus:ring-0 focus:ring-offset-0"
                 />
               </div>
               <div>
@@ -110,7 +110,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
                   id="password"
                   type="password"
                   placeholder="Masukkan password"
-                  className="mt-1"
+                  className="mt-1 focus:ring-0 focus:ring-offset-0"
                 />
               </div>
               <Button 
@@ -131,7 +131,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
                   id="reg-email"
                   type="email"
                   placeholder="Masukkan email"
-                  className="mt-1"
+                  className="mt-1 focus:ring-0 focus:ring-offset-0"
                 />
               </div>
               <div>
@@ -140,7 +140,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
                   id="reg-phone"
                   type="tel"
                   placeholder="Masukkan nomor HP"
-                  className="mt-1"
+                  className="mt-1 focus:ring-0 focus:ring-offset-0"
                 />
               </div>
               <div>
@@ -149,7 +149,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
                   id="reg-password"
                   type="password"
                   placeholder="Masukkan password"
-                  className="mt-1"
+                  className="mt-1 focus:ring-0 focus:ring-offset-0"
                 />
               </div>
               <Button 

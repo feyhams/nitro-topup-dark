@@ -80,28 +80,6 @@ export const Hero = ({ imageUrl }: HeroProps) => {
           </Button>
         </div>
 
-        {/* Trust Indicators */}
-        <div className="pt-8">
-          <p className="text-sm text-muted-foreground mb-4">Platform terpercaya dengan</p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-neon-cyan" />
-              <span className="text-foreground">SSL Encryption</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-neon-cyan" />
-              <span className="text-foreground">Proses Instan</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-neon-cyan" />
-              <span className="text-foreground">24/7 Support</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-neon-cyan" />
-              <span className="text-foreground">100K+ Users</span>
-            </div>
-          </div>
-        </div>
 
         {/* Special Badge */}
         <div className="flex justify-center">
