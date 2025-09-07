@@ -93,7 +93,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
             <TabsTrigger value="register">Daftar</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="login" className="space-y-4">
+          <TabsContent value="login" className="space-y-4 focus:outline-none">
             <div className="space-y-4">
               <div>
                 <Label htmlFor="email">Email atau Nomor HP</Label>
@@ -123,7 +123,7 @@ export const AccountDialog = ({ open, onOpenChange }: AccountDialogProps) => {
             </div>
           </TabsContent>
           
-          <TabsContent value="register" className="space-y-4">
+          <TabsContent value="register" className="space-y-4 focus:outline-none">
             <div className="space-y-4">
               <div>
                 <Label htmlFor="reg-email">Email</Label>
